@@ -1,99 +1,52 @@
+X = 1
+Y = 1
+Victory = False
+validdirection = "n"
+print("You can travel: (N)orth.")
 
-victory = False
-position = 1.1
-direction = ""
 
-while not victory:
-    
-    if position == 1.1:
-        print("You can travel: (N)orth.")
-        direction = input("Direction: ")
-        if direction in ["N", "n"]:
-            position += 0.1
-            position = round(position, 2)
-        else:
-            print("Not a valid direction")
-    elif position == 1.2:
-        print("You can travel: (N)orth or (E)ast or (S)outh.")
-        direction = input("Direction: ")
-        if direction in ["N","n"]:
-            position += 0.1
-            position = round(position, 2)
-        elif direction in ["E", "e"]:
-            position += 1.0
-            position = round(position, 2)
-        elif direction in ["S", "s"]:
-            position -= 0.1
-            position = round(position, 2)
-        else:
-            print("Not a valid direction.")
-    elif position == 1.3:
-        print("You can travel: (E)ast or (S)outh.")
-        direction = input("Direction: ")
-        if direction in ["E", "e"]:
-            position += 1.0
-            position = round(position, 2)
-        elif direction in ["S", "s"]:
-            position -= 0.1
-            position = round(position, 2)
-        else:
-            print("Not a valid direction.")
+while not Victory:
+    direction = input("Direction: ")
+    direction = direction.lower()
+    if not direction in validdirection:
+        print("Not a valid direction!")
+    else:
+        if direction == "n":
+            Y += 1
+        elif direction == "s":
+            Y -= 1
+        elif direction == "w":
+            X -= 1
+        elif direction == "e":
+            X += 1
 
-    elif position == 2.1:
-        print("You can travel: (N)orth.")
-        direction = input("Direction: ")
-        if direction in ["N", "n"]:
-            position += 0.1
-            position = round(position, 2)
-        else:
-            print("Not a valid direction.")
-    elif position == 2.2:
-        print("You can travel: (W)est or (S)outh.")
-        direction = input("Direction: ")
-        if direction in ["W", "w"]:
-            position -= 1.0
-            position = round(position, 2)
-        elif direction in ["S", "s"]:
-            position -= 0.1
-            position = round(position, 2)
-        else:
-            print("Not a valid direction.")
-    elif position == 2.3:
-        print("You can travel: (W)est or (E)ast.")
-        direction = input("Direction: ")
-        if direction in ["E", "e"]:
-            position += 1.0
-            position = round(position, 2)
-        elif direction in ["W", "w"]:
-            position -= 1.0
-            position = round(position, 2)
-        else:
-            print("Not a valid direction.")
-
-    elif position == 3.1:
-        print("Victory!")
-        victory = True
-    elif position == 3.2:
-        print("You can travel: (N)orth or (S)outh.")
-        direction = input("Direction: ")
-        if direction in ["N", "n"]:
-            position += 0.1
-            position = round(position, 2)
-        elif direction in ["S", "s"]:
-            position -= 0.1
-            position = round(position, 2)
-        else:
-            print("Not a valid direction.")
-    elif position == 3.3:
-        print("You can travel: (W)est or (S)outh.")
-        direction = input("Direction: ")
-        if direction in ["W", "w"]:
-            position -= 1.0
-            position = round(position, 2)
-        elif direction in ["S", "s"]:
-            position -= 0.1
-            position = round(position, 2)
-        else:
-            print("Not a valid direction.")
+        if X == 3 and Y == 1:
+            Victory = True
+            print("Victory!")
         
+        else: print("You can travel: ",end="")
         
+        if X == 1 and Y == 1:
+            validdirection = "n"
+            print ("(N)orth.")
+        elif X == 1 and Y == 2:
+            validdirection = "nes"
+            print ("(N)orth or (E)ast or (S)outh.")
+        elif X == 1 and Y == 3:
+            validdirection = "es"
+            print ("(E)ast or (S)outh.")
+        elif X == 2 and Y == 1:
+            validdirection = "n"
+            print ("(N)orth.")
+        elif X == 2 and Y == 2:
+            validdirection = "sw"
+            print ("(S)outh or (W)est.")
+        elif X == 2 and Y == 3:
+            validdirection = "ew"
+            print ("(E)ast or (W)est.")
+        elif X == 3 and Y == 2:
+            validdirection = "ns"
+            print ("(N)orth or (S)outh.")
+        elif X == 3 and Y == 3:
+            validdirection = "sw"
+            print ("(S)outh or (W)est.")
